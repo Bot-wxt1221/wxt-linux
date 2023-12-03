@@ -1,9 +1,9 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux
+pkgbase=linux-wxt
 pkgver=6.6.3.arch1
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Linux-wxt'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
@@ -38,18 +38,17 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('28edfc3d4f90cd738f2a20f5a2d68510268176d6111f6278d8f495edfd9495a7'
+sha256sums=('SKIP'
             'SKIP'
-            '4e58f0bab792e42b818037bee7696fa9bd0e65ec2df8db079e97782fc2da6c70'
+	    'SKIP'
             'SKIP'
-            'f77aab33af83c635e0445c6e424922cdc054efe2430c8c831f8bead23e08ba88')
-b2sums=('cd0d70316592fface23a6eddb9d0f8b0c67593f5466388043ebd68613be4eabc3e7c712ce758fa63dd11603101d9d91e22b3552b436bbd1c76f8e19208d7bf22'
+	    'SKIP')
+b2sums=('SKIP'
         'SKIP'
-        '689f5e04d81f4a9fec7ff8ef56cfa6538ad28812e42cd1b0e8a9988dbd25c7e14a7e8ad854c2561feeaaa95400ab185a5cfdf903441c69e339ac9d0ac177db3a'
+	'SKIP'
         'SKIP'
-        'eee80b262d447770f89bb16e4c84a5faedd8e2a46d57a5b6ad6371f5a9a8e11194f82c9160d78486fc1a889ad9dea6f0b2d90b8a21235aefc30bf7fe3ef355f6')
-
-export KBUILD_BUILD_HOST=archlinux
+	'SKIP')
+export KBUILD_BUILD_HOST=wxt
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
@@ -81,8 +80,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  CCACHE_DIR="~/.ccache" make all CC="ccache gcc" CXX="ccache g++" -j24 
+  make htmldocs -j24
 }
 
 _package() {
