@@ -1,4 +1,4 @@
-pkgbase = linux
+pkgbase = linux-wxt
 	pkgdesc = Linux-wxt
 	pkgver = 6.6.7.arch1
 	pkgrel = 1
@@ -38,7 +38,7 @@ pkgbase = linux
 	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = linux
+pkgname = linux-wxt
 	pkgdesc = The Linux-wxt kernel and modules
 	depends = coreutils
 	depends = initramfs
@@ -51,9 +51,9 @@ pkgname = linux
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-headers
+pkgname = linux-wxt-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-wxt kernel
 	depends = pahole
 
-pkgname = linux-docs
+pkgname = linux-wxt-docs
 	pkgdesc = Documentation for the Linux-wxt kernel
