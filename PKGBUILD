@@ -1,9 +1,9 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux
+pkgbase=linux-wxt
 pkgver=6.6.10.arch1
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Linux-wxt'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
@@ -47,9 +47,8 @@ b2sums=('c71e651438216e86e436af032cb529c029351b72b460568bd75858f835212360d646bae
         'SKIP'
         '344cfaf24f699684da14cb8e9982c9da587baab7df152b58d441e45676923e996d0b29773ef86e1f0c5a6bda5ccdc5d911206c13b2a1bd3f7eeb7a8305d0fb28'
         'SKIP'
-        '72b204712173dd109f60c6c81a10dc24c64eba7c2be8182a520b52f31ba2ecc4082fc711656a7e4893aac26120f9271c1fda3e37ad94236db95b14a6fdb56a82')
-
-export KBUILD_BUILD_HOST=archlinux
+	'SKIP')
+export KBUILD_BUILD_HOST=wxt
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
@@ -81,8 +80,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  CCACHE_DIR="~/.ccache" make all CC="ccache gcc" CXX="ccache g++" -j24 
+  make htmldocs -j24
 }
 
 _package() {
