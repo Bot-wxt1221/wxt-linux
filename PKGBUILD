@@ -46,10 +46,19 @@ sha256sums=('1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
             'SKIP'
             '3ba2b1c7b113f47f48c051f86b0fe0011170e0a3d2e2f2fee799857b88864639'
             'SKIP'
+<<<<<<< HEAD
 	    'SKIP'
 	    'SKIP'
 	    'SKIP'
 	   )
+=======
+            'SKIP')
+b2sums=('c71e651438216e86e436af032cb529c029351b72b460568bd75858f835212360d646bae27caeb3140a4234f4155553aceec3aa94d761e3a634be7c164eee86a4'
+        'SKIP'
+        'a9c86a40cdd55a375a233805d412395de2855a21f8658a22a295f0176d4d97b56e504c3496ad0a7f71d27fa2eaf82594db23a18cfe3af875d29c678275cd1732'
+        'SKIP'
+        'SKIP')
+>>>>>>> 494b08a (6.7init)
 export KBUILD_BUILD_HOST=wxt
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 

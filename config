@@ -2142,6 +2142,8 @@ CONFIG_NFC_ST95HF=n
 # end of Near Field Communication (NFC) devices
 
 >>>>>>> 3c80eb9 (update config)
+=======
+>>>>>>> 494b08a (6.7init)
 CONFIG_PSAMPLE=m
 CONFIG_NET_IFE=m
 CONFIG_LWTUNNEL=y
