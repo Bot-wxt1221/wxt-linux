@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 pkgbase = linux
 	pkgdesc = Linux
+<<<<<<< HEAD
 	pkgver = 6.7.1.arch1
+=======
+	pkgver = 6.7.arch3
+=======
+pkgbase = linux-wxt
+	pkgdesc = Linux-wxt
+	pkgver = 6.7.arch1
+>>>>>>> a23783f (6.7init)
+>>>>>>> 8b6a09b (6.7init)
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
@@ -36,10 +46,18 @@ pkgbase = linux
 	b2sums = SKIP
 	b2sums = 7b04cc10148957ea05cf62d7760b3c2744e609139c82b0046186db50a7744db25fbf8b41c4955a0be1f53a5ec0841eb3b75de6ef0a6dc811964190dd6ccd38c5
 	b2sums = SKIP
+<<<<<<< HEAD
 	b2sums = d205c380b69acd2b6a57bce0245e0918e88af624aec3bd87b099da8b9759a6f9159693c30ab75d7b690913a21b0dbb0f14d8fc224991f9aca712d8d344212aa7
+=======
+<<<<<<< HEAD
+	b2sums = 341802515628e7c43a1cd5294df19ab8811bdbc75fd7f454dec159022aa35a3a90706f57495868be65f8841507064bc855fc2bebc4b99df6bf4af1111932387c
+=======
+	b2sums = SKIP
+>>>>>>> a23783f (6.7init)
+>>>>>>> 8b6a09b (6.7init)
 
-pkgname = linux
-	pkgdesc = The Linux kernel and modules
+pkgname = linux-wxt
+	pkgdesc = The Linux-wxt kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -51,9 +69,9 @@ pkgname = linux
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel
+pkgname = linux-wxt-headers
+	pkgdesc = Headers and scripts for building modules for the Linux-wxt kernel
 	depends = pahole
 
-pkgname = linux-docs
-	pkgdesc = Documentation for the Linux kernel
+pkgname = linux-wxt-docs
+	pkgdesc = Documentation for the Linux-wxt kernel

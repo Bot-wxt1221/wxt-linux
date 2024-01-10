@@ -1,9 +1,11 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux
 pkgver=6.7.1.arch1
+pkgbase=linux-wxt
 pkgrel=1
-pkgdesc='Linux'
+_linuxver=6.7
+_rtpatch=rt6
+pkgdesc='Linux-wxt'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
@@ -30,27 +32,25 @@ _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/${_linuxver}/patch-${_linuxver}-${_rtpatch}.patch.{gz,sign}
   config  # the main kernel config file
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
+  64254695FFF0AA4466CC19E67B96E8162A8CF5D1
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
             'SKIP'
             '3ba2b1c7b113f47f48c051f86b0fe0011170e0a3d2e2f2fee799857b88864639'
             'SKIP'
-            'aa47193f89794412776f36c970cabbf19e9abaccf01e3c33f4f891dd4661e5af')
-b2sums=('080f19034a9f5519e3212c723492849f3a2e019c310615b40e636cad39c89369fd91fd1129750266a1cf9683c0762a3ff52942045066d62f927642c443b94c76'
-        'SKIP'
-        '7b04cc10148957ea05cf62d7760b3c2744e609139c82b0046186db50a7744db25fbf8b41c4955a0be1f53a5ec0841eb3b75de6ef0a6dc811964190dd6ccd38c5'
-        'SKIP'
-        'd205c380b69acd2b6a57bce0245e0918e88af624aec3bd87b099da8b9759a6f9159693c30ab75d7b690913a21b0dbb0f14d8fc224991f9aca712d8d344212aa7')
-
-export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
+	    'SKIP'
+	    'SKIP'
+	    'SKIP'
+	   )
+export KBUILD_BUILD_HOST=wxt
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
@@ -59,12 +59,12 @@ prepare() {
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     src="${src%.zst}"
+    src="${src%.gz}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -81,8 +81,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  CCACHE_DIR="~/.ccache" make all CC="ccache gcc" CXX="ccache g++" -j24 
+  make htmldocs -j24
 }
 
 _package() {
