@@ -32,12 +32,13 @@ _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-  https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/${_linuxver}/patch-${_linuxver}-${_rtpatch}.patch.{gz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/patch-${pkgver%.*}-rt6.patch.{gz,sign}
   config  # the main kernel config file
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  64254695FFF0AA4466CC19E67B96E8162A8CF5D1
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
   64254695FFF0AA4466CC19E67B96E8162A8CF5D1
 )
@@ -46,20 +47,17 @@ sha256sums=('1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
             'SKIP'
             '3ba2b1c7b113f47f48c051f86b0fe0011170e0a3d2e2f2fee799857b88864639'
             'SKIP'
-<<<<<<< HEAD
 	    'SKIP'
 	    'SKIP'
 	    'SKIP'
-	   )
-=======
-            'SKIP')
+	    'SKIP')
 b2sums=('cecdbd19905e43e485ab73b352ced18b37f2a138c97a6956cadcda5d3d271001117dc1cf896b166ff019fc7f405f9539e2ed0d6112b0890efb04d182adf4fd0e'
         'SKIP'
         'a9c86a40cdd55a375a233805d412395de2855a21f8658a22a295f0176d4d97b56e504c3496ad0a7f71d27fa2eaf82594db23a18cfe3af875d29c678275cd1732'
         'SKIP'
+	'SKIP'
+        'SKIP'
         'SKIP')
->>>>>>> 494b08a (6.7init)
-export KBUILD_BUILD_HOST=wxt
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
