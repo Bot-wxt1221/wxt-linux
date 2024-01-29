@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgver=6.7.1.arch1
 pkgbase=linux-wxt
+pkgver=6.7.2.arch1
 pkgrel=1
 _linuxver=6.7
 _rtpatch=rt6
@@ -43,12 +43,11 @@ validpgpkeys=(
   64254695FFF0AA4466CC19E67B96E8162A8CF5D1
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
+sha256sums=('c34de41baa29c475c0834e88a3171e255ff86cd32d83c6bffc2b797e60bfa671'
             'SKIP'
-            '3ba2b1c7b113f47f48c051f86b0fe0011170e0a3d2e2f2fee799857b88864639'
+            'ec7ea7c4d28951d1ea22419dce75f245894a2aebb13df4dbc87a09d2d2c08a95'
             'SKIP'
-	    'SKIP'
-	    'SKIP'
+    	    'SKIP'
 	    'SKIP'
 	    'SKIP')
 b2sums=('cecdbd19905e43e485ab73b352ced18b37f2a138c97a6956cadcda5d3d271001117dc1cf896b166ff019fc7f405f9539e2ed0d6112b0890efb04d182adf4fd0e'
@@ -58,6 +57,8 @@ b2sums=('cecdbd19905e43e485ab73b352ced18b37f2a138c97a6956cadcda5d3d271001117dc1c
 	'SKIP'
         'SKIP'
         'SKIP')
+export KBUILD_BUILD_HOST=wxt
+export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
