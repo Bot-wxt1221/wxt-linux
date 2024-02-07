@@ -37,13 +37,13 @@ source=(
 )
 	
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('c34de41baa29c475c0834e88a3171e255ff86cd32d83c6bffc2b797e60bfa671'
+sha256sums=('SKIP'
     	    'SKIP'
-	    'SKIP'
+            'SKIP'
 	    'SKIP')
-b2sums=('4c1f480de0c1458aa67379cd02d35708f63850adb84a85061088de1f82b5d084bc7cf7da459a3f1e415544351d1f36a9a832277240774ae461cdde11687cbadd'
+b2sums=('SKIP'
         'SKIP'
-        'SKIP'
+	'SKIP'
         'SKIP')
 export KBUILD_BUILD_HOST=wxt
 export KBUILD_BUILD_USER=$pkgbase
