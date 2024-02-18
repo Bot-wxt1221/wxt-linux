@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-wxt
-pkgver=6.7.4.arch1
+pkgver=6.7.5.arch1
 pkgrel=1
 _linuxver=6.7
 _rtpatch=rt6
