@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-wxt
-pkgver=6.7.5.arch1
+pkgver=6.7.6.arch1
 pkgrel=1
 _linuxver=6.7
 _rtpatch=rt6
@@ -77,7 +77,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  CCACHE_DIR="~/.ccache" make all CC="ccache gcc" CXX="ccache g++" -j24 
+  CCACHE_DIR="~/.ccache" make all CC="ccache gcc" CXX="ccache g++" -j24
+  CCACHE_DIR="~/.ccache" make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1 CC="ccache gcc" CXX="ccache g++" -j24
   make htmldocs -j24
 }
 
@@ -130,7 +131,7 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
