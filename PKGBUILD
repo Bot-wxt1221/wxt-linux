@@ -2,7 +2,7 @@
 
 pkgbase=linux-wxt
 pkgver=6.7.6.arch1
-pkgrel=1
+pkgrel=2
 _linuxver=6.7
 _rtpatch=rt6
 pkgdesc='Linux-wxt'
