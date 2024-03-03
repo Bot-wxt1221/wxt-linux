@@ -1,11 +1,12 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-wxt
-pkgver=6.7.6.arch1
 pkgrel=2
 _linuxver=6.7
 _rtpatch=rt6
 pkgdesc='Linux-wxt'
+pkgver=6.7.8.arch1
+pkgrel=1
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
