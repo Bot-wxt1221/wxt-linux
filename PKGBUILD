@@ -2,14 +2,14 @@
 
 pkgbase=linux-wxt
 pkgrel=2
-_linuxver=6.7
-_rtpatch=rt6
+_linuxver=6.8
+_rtpatch=rt8
 pkgdesc='Linux-wxt'
-pkgver=6.7.9.arch1
+pkgver=6.8.1.arch1
 pkgrel=1
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
   bc
   cpio
@@ -25,15 +25,19 @@ makedepends=(
   graphviz
   imagemagick
   python-sphinx
+  python-yaml
   texlive-latexextra
 )
-options=('!strip')
+options=(
+  !debug
+  !strip
+)
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst
-  https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.7/patch-6.7-rt6.patch.gz
+  https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.8/patch-6.8-rt8.patch.gz
   config  # the main kernel config file
 )
 	
