@@ -3,9 +3,9 @@
 pkgbase=linux-wxt
 pkgrel=2
 _linuxver=6.8
-_rtpatch=rt8
+_rtpatch=rt11
 pkgdesc='Linux-wxt'
-pkgver=6.8.2.arch2
+pkgver=6.8.7.arch1
 pkgrel=1
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -37,7 +37,7 @@ _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst
-  https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.8/patch-6.8-rt8.patch.gz
+  https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.8/patch-6.8.2-rt11.patch.gz
   config  # the main kernel config file
 )
 	
